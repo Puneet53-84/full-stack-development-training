@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-300 flex justify-center p-10">
+    <main class="bg-white shadow-lg rounded-lg w-full p-6">
+        <div>
+            <!-- div 1 heading -->
+            <h1 class="text-3xl font-bold text-gray-700">To Do List</h1>
+        </div>
+        <div class="mt-4">
+            <!-- div 2 todo form -->
+            <form>
+                <input class="flex-1 border rounded px-2" type="text" placeholder="Add a New Task...">
+                <button class="bg-blue-500 px-3" type="submit">Add</button>
+            </form>
+        </div>
+        <div>
+            <!-- div 3 to do list -->
+            <ul class="space-y-3">
+                <li class="flex">
+                    <input type="checkbox">
+                    <p class="ml-2">Goto Gym</p>
+                    <button class="ml-auto hover:text-red-500 text-xl px-2">&times;</button>
+                </li>
+                <li class="flex">
+                    <input type="checkbox">
+                    <p class="ml-2">Groceries</p>
+                    <button class="ml-auto hover:text-red-500 text-xl px-2">&times;</button>
+                </li>
+                <li class="flex">
+                    <input type="checkbox">
+                    <p class="ml-2">Playing Video Games</p>
+                    <button class="ml-auto hover:text-red-500 text-xl px-2">&times;</button>
+                </li>
+                <li class="flex">
+                    <input type="checkbox">
+                    <p class="ml-2">Going Out</p>
+                    <button class="ml-auto hover:text-red-500 text-xl px-2">&times;</button>
+                </li>
+            </ul>
+        </div>
+        <div class="mt-8">
+            <!-- div 4 for completed task -->
+            <h2 class="text-lg text-blue-500 mb-2">Completed Task</h2>
+            <ul class="space-y-3">
+                <li class="flex gap-x-3">
+                    <input type="checkbox" checked>Studying HTML and CSS
+                </li>
+                <li class="flex gap-x-3">
+                    <input type="checkbox" checked>Create a Sample Project
+                </li>
+                <li class="flex gap-x-3">
+                    <input type="checkbox" checked>Going to Rohtak 
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,44 +1,137 @@
 <html>
-
+<!-- USES AI FOR ENHANCING THE BIO PAGE BEAUTY -->
+ <!-- SB AI N KRA H YE KHKE APMAAN NA KRE -->
 <head>
     <!--header section-->
     <title> www.bio.com</title>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #fff);
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            width: 180px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 4px solid #1abc9c;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1abc9c;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        .bio {
+            background-color: #ffffff;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        h1 {
+            text-align: center;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1, h2 {
+                font-size: 24px;
+            }
+
+            .bio {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!--body section-->
-    <h1>My Personal Bio</h1>
+    <!-- <h1>My Personal Bio</h1> -->
     <!--for image -->
     <img height="40%" width="20%"
     src="https://i.ibb.co/8gM6CMzc/Whats-App-Image-2025-07-23-at-12-40-38-b17af0a0.jpg"><br/>
     <h2> Puneet Sharma</h2><br/>
-    <p style="font-size: 150%;">Hi! I'm a Software Engineer with a passion for
+    <div>        
+    <p style="font-size: 110%;">Hi! I'm a Software Engineer with a passion for
     web development and fitness. I love learning
     new technologies, solving problems and exploring
     the world.</p>
+    </div>
     <h1>Details</h1>
     <!--table tag-->
     <table border="2">
         <tr>
             <th> Full Name </th>
-            <td> Rahul Sharma</td>
+            <td> Puneet Sharma</td>
         </tr>
         <tr>
             <th> Profession </th>
-            <td> Software Engineer</td>
+            <td> Full Stack Developer</td>
         </tr>
         <tr>
             <th> Education</th>
-            <td> B.Tech in Computer Science</td>
+            <td> B.Tech in Information Technology</td>
         </tr>    
         <tr>
             <th> Skills</th>
-            <td> Java,Spring Boot,JavaScript,React</td>
+            <td> C,C++,Python,HTML,CSS</td>
         </tr>
         <tr>
             <th> Hobbies</th>
-            <td> Gym,Music,Travel</td>
+            <td> Gym,Music,Travel,Food</td>
         </tr>
     </table>
 </body>
