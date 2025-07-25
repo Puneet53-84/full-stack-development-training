@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Maker</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #45a049;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        /* Home Page Styles */
+        .home-content {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        /* Quiz Creation Styles */
+        .quiz-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], 
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .option-group {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .option-group input[type="text"] {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .option-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .add-option, .add-question, .remove-option {
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .remove-option {
+            background: #dc3545;
+        }
+        
+        .remove-option:hover {
+            background: #c82333;
+        }
+        
+        /* Quiz Listing Styles */
+        .quiz-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .quiz-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quiz-card h3 {
+            color: #4CAF50;
+        }
+        
+        .quiz-card p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* Quiz Taking Styles */
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .option:hover {
+            background: #eee;
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        /* Quiz Results Styles */
+        .results-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+            text-align: center;
+        }
+        
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        
+        .correct-answer {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .incorrect-answer {
+            color: #dc3545;
+        }
+        
+        /* User Authentication Styles */
+        .auth-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto 30px;
+            display: none;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .nav-links a {
+            margin-left: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .option-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .option-group input[type="text"] {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Quiz Maker</h1>
+            <p>Create and take quizzes with ease</p>
+        </div>
+    </header>
+    
+    <nav class="nav">
+        <div class="logo">
+            <h2>Quiz Maker</h2>
+        </div>
+        <div class="nav-links">
+            <a href="#" id="home-link">Home</a>
+            <a href="#" id="create-link">Create Quiz</a>
+            <a href="#" id="quizzes-link">Browse Quizzes</a>
+            <a href="#" id="login-link">Login</a>
+            <a href="#" id="register-link">Register</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home-page">
+            <div class="home-content">
+                <h2>Welcome to Online Quiz Maker</h2>
+                <p>Create your own quizzes or take quizzes created by others. Test your knowledge and share with friends!</p>
+                <a href="#" class="btn" id="create-quiz-btn">Create a Quiz</a>
+                <a href="#" class="btn btn-secondary" id="take-quiz-btn">Take a Quiz</a>
+            </div>
+        </div>
+        
+        <!-- Quiz Creation Form -->
+        <div id="quiz-creation" class="quiz-form">
+            <h2>Create a New Quiz</h2>
+            <form id="quiz-form">
+                <div class="form-group">
+                    <label for="quiz-title">Quiz Title:</label>
+                    <input type="text" id="quiz-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quiz-description">Description:</label>
+                    <textarea id="quiz-description" rows="3"></textarea>
+                </div>
+                
+                <div id="questions-container">
+                    <div class="question-group" data-question-id="1">
+                        <div class="form-group">
+                            <label>Question 1:</label>
+                            <input type="text" class="question-text" required>
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <input type="radio" name="correct-answer-1" value="0" required>
+                                <input type="text" class="option-text" placeholder="Option 1" required>
+                                <button type="button" class="btn btn-secondary remove-option">Remove</button>
+                            </div>
+                            <div class="option-group">
+                                <input type="radio" name="correct-answer-1" value="1" required>
+                                <input type="text" class="option-text" placeholder="Option 2" required>
+                                <button type="button" class="btn btn-secondary remove-option">Remove</button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-secondary add-option">Add Option</button>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-secondary add-question">Add Question</button>
+                <button type="submit" class="btn">Save Quiz</button>
+            </form>
+        </div>
+        
+        <!-- Quiz Listing -->
+        <div id="quiz-listing" style="display: none;">
+            <h2>Available Quizzes</h2>
+            <div class="quiz-list">
+                <div class="quiz-card">
+                    <h3>General Knowledge Quiz</h3>
+                    <p>Test your general knowledge with this 10-question quiz.</p>
+                    <p>Created by: Admin</p>
+                    <a href="#" class="btn take-quiz-btn" data-quiz-id="1">Take Quiz</a>
+                </div>
+                
+                <div class="quiz-card">
+                    <h3>Science Trivia</h3>
+                    <p>How much do you know about science? Take this quiz to find out!</p>
+                    <p>Created by: ScienceFan</p>
+                    <a href="#" class="btn take-quiz-btn" data-quiz-id="2">Take Quiz</a>
+                </div>
+                
+                <div class="quiz-card">
+                    <h3>History Challenge</h3>
+                    <p>A challenging quiz about world history.</p>
+                    <p>Created by: HistoryBuff</p>
+                    <a href="#" class="btn take-quiz-btn" data-quiz-id="3">Take Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz Taking -->
+        <div id="quiz-taking" class="quiz-container">
+            <h2 id="quiz-taking-title">General Knowledge Quiz</h2>
+            <p id="quiz-taking-description">Test your general knowledge with this 10-question quiz.</p>
+            
+            <div id="quiz-questions">
+                <div class="question active" data-question-id="1">
+                    <h3>Question 1</h3>
+                    <p>What is the capital of France?</p>
+                    
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q1" value="0"> London</label>
+                        <label class="option"><input type="radio" name="q1" value="1"> Paris</label>
+                        <label class="option"><input type="radio" name="q1" value="2"> Berlin</label>
+                        <label class="option"><input type="radio" name="q1" value="3"> Madrid</label>
+                    </div>
+                </div>
+                
+                <div class="question" data-question-id="2">
+                    <h3>Question 2</h3>
+                    <p>Which planet is known as the Red Planet?</p>
+                    
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q2" value="0"> Venus</label>
+                        <label class="option"><input type="radio" name="q2" value="1"> Jupiter</label>
+                        <label class="option"><input type="radio" name="q2" value="2"> Mars</label>
+                        <label class="option"><input type="radio" name="q2" value="3"> Saturn</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prev-question">Previous</button>
+                <button class="btn" id="next-question">Next</button>
+                <button class="btn" id="submit-quiz" style="display: none;">Submit Quiz</button>
+            </div>
+        </div>
+        
+        <!-- Quiz Results -->
+        <div id="quiz-results" class="results-container">
+            <h2>Quiz Results</h2>
+            <h3 id="results-quiz-title">General Knowledge Quiz</h3>
+            
+            <div class="score">
+                Your Score: <span id="user-score">2</span> out of <span id="total-questions">2</span>
+            </div>
+            
+            <div id="results-details">
+                <div class="result-item">
+                    <p><strong>Question 1:</strong> What is the capital of France?</p>
+                    <p>Your answer: <span class="correct-answer">Paris</span></p>
+                    <p>Correct answer: <span class="correct-answer">Paris</span></p>
+                </div>
+                
+                <div class="result-item">
+                    <p><strong>Question 2:</strong> Which planet is known as the Red Planet?</p>
+                    <p>Your answer: <span class="incorrect-answer">Venus</span></p>
+                    <p>Correct answer: <span class="correct-answer">Mars</span></p>
+                </div>
+            </div>
+            
+            <a href="#" class="btn" id="back-to-quizzes">Back to Quizzes</a>
+        </div>
+        
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form">
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="text" id="login-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn btn-secondary" id="cancel-login">Cancel</button>
+            </form>
+        </div>
+        
+        <!-- Registration Form -->
+        <div id="register-form" class="auth-form">
+            <h2>Register</h2>
+            <form>
+                <div class="form-group">
+                    <label for="register-name">Name:</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="text" id="register-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password:</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                
+                <button type="submit" class="btn">Register</button>
+                <button type="button" class="btn btn-secondary" id="cancel-register">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Note: This would normally be JavaScript, but since the requirement is HTML/CSS only,
+        // this is just a placeholder to show how the functionality would work.
+        // In a real implementation, this would handle all the page navigation and quiz functionality.
+        
+        // The actual functionality would include:
+        // 1. Showing/hiding different sections based on user navigation
+        // 2. Creating new quizzes with questions and options
+        // 3. Taking quizzes and tracking answers
+        // 4. Calculating and displaying results
+        // 5. User authentication flows
+    </script>
+</body>
+</html>
