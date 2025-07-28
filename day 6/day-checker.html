@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function handleInput() {
+            // Get the day number input
+            let dayNumber = parseInt(document.getElementById("dayNumber").value);
+
+            // here find the day based on number 
+            let dayName;
+            switch (dayNumber) {
+                case 1:
+                    dayName = "Monday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                case 6:
+                    dayName = "Saturday";
+                    break;
+                case 7:
+                    dayName = "Sunday";
+                    break;
+                default:
+                    dayName = "Invalid day number! Enter a number between 1 and 7.";
+            }
+
+            // Display the result
+            document.getElementById("result").innerText = dayName;
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden p-6 space-y-6">
+        <h1 class="text-2xl font-bold text-center text-gray-800">Day Checker</h1>
+        
+        <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700">Enter a day number (1-7):</label>
+            <div class="flex gap-2">
+                <input 
+                    type="number" 
+                    id="dayNumber" 
+                    min="1" 
+                    max="7" 
+                    placeholder="1-7"
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                >
+                <button 
+                    onclick="handleInput()"
+                    class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                >
+                    Check Day
+                </button>
+            </div>
+        </div>
+        
+        <div id="result" class="p-4 bg-gray-50 rounded-lg text-gray-800 font-medium min-h-12 flex items-center justify-center"></div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+    
+

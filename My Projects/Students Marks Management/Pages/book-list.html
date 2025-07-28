@@ -1,48 +1,139 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Book-List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Review</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
 </head>
 
-<body class="">
-    <header>
-        <nav class="bg-gray-600 font-semibold text-xl text-white flex p-4">
-            <h1 class="">BOOK REVIEW </h1>
-            <h1 class="ml-auto">Puneet Sharma</h1>
-        </nav>
-        <nav>
-            <h4 class="bg-blue-500">Home>login.html>book.html</h4>
-        </nav>
-    </header>
-    <main class="flex justify-center">
+<div class="mb-6 ">
+    <h1 class="text-2xl font-bold bg-gray-400 rounded p-4">BOOK REVIEW</h1>
+
+</div>
+
+<div class=" bg-blue-500 mb-3 py-2 ">
+        Home &gt; <a href="#">login.html</a> &gt; <a href="#">book.html</a>
+    </div>
 
 
-        <form class="space-y-3 ">
-            <h>Search book here:</h>
-            <input class="border rounded mt-3" type="text" placeholder="Enter any one book title, author"><br />
-        </form>
-        <hr>
-        <!-- making table -->
-         <table border="1">
-        <tr>
-            <th>ISBN No. </th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Year</th>
-        </tr>
-        <tr>
-            <td class=""> 1</td>
-            <td> 21 july</td>
-            <td> 84</td>
-        </tr>
-        <tr>
-            <td> 2</td>
-            <td> 21 july</td>
-            <td> 85 </td>
-        </tr>
+<hr class="border-gray-300 my-4">
+
+
+<div class="mb-6">
+    <div class="mb-4">
+        <label class="block text-gray-700 mb-2">Search book here: </label>
+        <input type="text" class="max-full p-2 border border-gray-300 rounded"
+            placeholder="Enter any one book title, author or ISBN">
+            <button class="bg-blue-400 border rounded px-3 p-2">Search</button>
+    </div>
+</div>
+
+<div class="overflow-x-auto">
+    <table class="min-w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">ISBN No</th>
+                <th class="px-4 py-2">Title</th>
+                <th class="px-4 py-2">Author</th>
+                <th class="px-4 py-2">Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">0679772677</td>
+                <td class="px-4 py-2">A Civil Action</td>
+                <td class="px-4 py-2">Jonathan Hart</td>
+                <td class="px-4 py-2">1995</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">031632468X</td>
+                <td class="px-4 py-2">Frog Music</td>
+                <td class="px-4 py-2">Emma Donoghue</td>
+                <td class="px-4 py-2">2014</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">1842322761</td>
+                <td class="px-4 py-2">On the Beach</td>
+                <td class="px-4 py-2">Nevil Shute</td>
+                <td class="px-4 py-2">1957</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">0586217835</td>
+                <td class="px-4 py-2">Magician</td>
+                <td class="px-4 py-2">Raymond E. Feist</td>
+                <td class="px-4 py-2">1982</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">0345388666</td>
+                <td class="px-4 py-2">The Shining Ones</td>
+                <td class="px-4 py-2">David Eddings</td>
+                <td class="px-4 py-2">1993</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">0751504386</td>
+                <td class="px-4 py-2">Skeleton Crew</td>
+                <td class="px-4 py-2">Stephen King</td>
+                <td class="px-4 py-2">1985</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">1595542779</td>
+                <td class="px-4 py-2">Skin</td>
+                <td class="px-4 py-2">Ted Dekker</td>
+                <td class="px-4 py-2">2006</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">0505527847</td>
+                <td class="px-4 py-2">Trouble in Mudbug</td>
+                <td class="px-4 py-2">Jana Deleon</td>
+                <td class="px-4 py-2">2009</td>
+            </tr>
+            <tr class="hover:bg-gray-100 cursor-pointer">
+                <td class="px-4 py-2 text-blue-600">1414334095</td>
+                <td class="px-4 py-2">Her Daughter's Dream</td>
+                <td class="px-4 py-2">Francine Rivers</td>
+                <td class="px-4 py-2">2010</td>
+            </tr>
+        </tbody>
     </table>
-    </main>
+</div>
 </body>
 
 </html>

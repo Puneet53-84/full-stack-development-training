@@ -23,7 +23,7 @@ console.log(height);
 
 // boolean
 let isMarried = false
-console.log(isMarried)
+console.log(isMarried);
 
 // is js case sensitive
 let a = 10;//a is smaller case
@@ -84,17 +84,9 @@ console.log("D.O.B year-" + myDOB.getFullYear());//get year from date
 console.log("D.O.B Month-" + (myDOB.getMonth()+1));//get month from date
 console.log("D.O.B date-" + myDOB.getDate());//get date from date
 
-console.log("my expression is " + 1 + 5);//"my expression 1" + 5 --> my expression 15  
+console.log("my expression is " + 1 + 5);//"my expression is 1" + 5 --> my expression is 15  
 //isme vo numbers ko string k satth concatinate kr rha h bsss
 
 // isme vo phle brackets solve kr rha h as acc to bodmas rule then jo solution ayega fr usko string k saath concatinate kr rha h 
-console.log("my expression is " + (1 + 5));//"my expression " + 6 --> my expression 6
-
-
-
-
-
-
-
-
+console.log("my expression is " + (1 + 5));//"my expression is" + 6 --> my expression is 6
 

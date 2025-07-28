@@ -18,7 +18,7 @@ greetWithName("Puneet Sharma");
 
 // functions with multiple parameters 
 function greetWithFullName(firstname,lastname){
-    console.log("Hello, My Fullname is " + firstname + "" + lastname);
+    console.log("Hello, My Fullname is " + firstname + " " + lastname);
     console.log(`Hello, My Fullname is ${firstname} ${lastname}`);
 }
 greetWithFullName("Puneet","Sharma")
@@ -36,4 +36,3 @@ function subNumbers(a,b){
 }
 let res = subNumbers(10,20);
 console.log("The sub is:" + res)
-
