@@ -1,5 +1,5 @@
 {
-  "name": "my-fifth-react-project",
+  "name": "my-sixth-react-project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -24,6 +25,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": ""
+  }
 }
