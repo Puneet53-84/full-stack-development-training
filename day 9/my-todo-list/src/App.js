@@ -1,5 +1,5 @@
 import { Pendinglist } from './Pendinglist';
-import { TodoList } from './to--do--list';
+import { TodoList } from './TodoList';
 
 function App() {
   return (
