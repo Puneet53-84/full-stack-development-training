@@ -1,34 +1,90 @@
-function taskAdded() {
-    alert("Your To-Do Task is added");
-}
+import { useState } from "react";
+function AddToDoPage(props) {
+    let todo = props.todo;
+    let setTodo = props.setTodo;
 
-function AddTask() {
+    let [formData, setFormData] = useState({
+        todoTitle: "",
+        dueDate: "",
+        status: "pending"
+    })
+    function handleChange(e) {
+
+        let inputName = e.target.name;
+        let inputValue = e.target.value;
+
+        setFormData(prev => ({
+            ...prev,
+            [inputName]: [inputValue]
+        }))
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        //stringify is function JSON file which take parameter as object/json and return string of it
+        alert("form submitted, data" + JSON.stringify(formData))
+
+        // update state 
+        setTodo(previousTodos => ([
+            ...previousTodos,
+            {
+                "id": Date.now(),
+                "todoTitle": formData.todoTitle,
+                "dueDate": formData.dueDate,
+                "status": formData.status,
+                "completedDate": "",
+            }
+        ]))
+    }
+
+
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg space-y-4">
-            <label className="block text-gray-700 font-semibold">To Do Task:</label>
-            <input type="text" required 
-            placeholder="Enter the Task" 
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" /><br />
 
-            <label className="block text-gray-700 font-semibold">Due date:</label>
-            <input type="date" required 
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" /><br />
+        <div className="bg-white p-6 rounded-xl shadow-lg max-w-md mx-auto mt-10 space-y-6 border border-gray-200">
 
-            <label className="block text-gray-700 font-semibold">Status</label>
-            <select className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <option>Click Here</option>
-                <option value="pending" >Task Pending</option>
-                <option value="completed">Task is completed</option>
-            </select>
-            <button
-                className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
-                onClick={() => taskAdded()}>Submit
-            </button>
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <div className="space-y-4">
+
+                    <div>
+                        <label className="block text-gray-700 font-semibold mb-1">📝 Todo Title</label>
+                        <input
+                            type="text"
+                            placeholder="Enter todo title"
+                            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            name="todoTitle"
+                            value={formData.todoTitle}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 font-semibold mb-1">📅 Due Date</label>
+                        <input
+                            type="date"
+                            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            name="dueDate"
+                            value={formData.dueDate}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                    </div>
+                </div>
+                <br/>
+
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+                    >
+                        Submit
+                    </button>
+
+                </div>
+            </form>
         </div>
+
     );
 }
-
-export default AddTask;
-
-
-
+export default AddToDoPage;
