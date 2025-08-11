@@ -27,12 +27,12 @@ function LoginPage({ setIsLogin, setAccountData }) {
                     <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
                             <label className="block text-gray-700 font-medium mb-1">Mobile Number:</label>
-                            <input type="number" name="mobile" value={formData.mobile} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2" />
+                            <input type="number" placeholder="Enter your mobile no." name="mobile" value={formData.mobile} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2" />
                         </div>
                         <div>
                             <label className="block text-gray-700 font-medium mb-1">Password:</label>
                             <div className="relative">
-                                <input type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 pr-10" />
+                                <input type={showPassword ? "text" : "password"} placeholder="Enter your password" name="password" value={formData.password} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 pr-10" />
                                 <span onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-3 flex items-center cursor-pointer">{showPassword ? "Hide" : "Show"}</span>
                             </div>
                         </div>
