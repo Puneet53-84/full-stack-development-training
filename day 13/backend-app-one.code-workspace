@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "backend-app-one"
+		},
+		{
+			"path": "backend-app-request-handling"
+		},
+		{
+			"path": "backend-app-two"
+		},
+		{
+			"path": "backend-response-handling"
+		},
+		{
+			"path": "backend-student-crud"
+		},
+		{
+			"path": "backend-todo-app"
+		}
+	]
+}
